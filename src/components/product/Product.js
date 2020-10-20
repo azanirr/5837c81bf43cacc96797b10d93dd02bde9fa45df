@@ -13,7 +13,7 @@ function Product () {
 		border-radius: 8px;
 		width: 400px;
 		height: 500px;
-		margin: 100px auto;
+		margin: 50px auto 0 auto;
 		display: flex;
 		flex-direction: column;
 		outline: #f1f1f2;
@@ -26,7 +26,7 @@ function Product () {
 		}
 
 		@media only screen and (max-width: 700px){
-		width: 90%;
+		width: 100%;
 		}
 		`;
 	

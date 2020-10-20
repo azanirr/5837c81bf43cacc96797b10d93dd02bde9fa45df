@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from '../components/product/Product';
+import Body from '../components/body/Body';
 import Navbar from '../components/navbar/Navbar';
 
 function Home () {
@@ -7,9 +7,7 @@ function Home () {
 	return(
 		<div>
 			<Navbar />
-			<Product />
-			<Product />
-			<Product />
+			<Body />
 		</div>
 	)
 }
