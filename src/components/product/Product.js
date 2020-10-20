@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import GuitarImage from '../../assets/image/guitar.jpg';
 import StarRatings from 'react-star-ratings';
 
-function Product () {
+function Product (props) {
+
+	const { addPrice } = props;
 	
 	const [rating] = useState(4.5);
 	
@@ -109,7 +111,7 @@ function Product () {
 			<Para>by Kulina • Uptown Guitar</Para>
 			<DivPrice>
 				<Header>Rp.35.000</Header>
-				<Button>Add +</Button>
+				<Button onClick={addPrice}>Add +</Button>
 			</DivPrice>
 		</Card>
 	)

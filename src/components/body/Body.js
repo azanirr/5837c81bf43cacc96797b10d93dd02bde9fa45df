@@ -1,12 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Products from '../product/Product';
 
 function Body () {
 	
+	const [price, setPrice] = useState(0),
+		  [quantity, setQuantity] = useState(0),
+		  [openCart, setOpenCart] = useState(false);
+	
+	const addPriceHandler = () => {
+		setPrice(price + 35000);
+		setQuantity(quantity + 1);
+		setOpenCart(true);
+	}
+	
+	
 	const BodyDiv = styled.div`
 		padding-top: 180px;
-		
 	`
 	
 	const DivProduct = styled.div`
@@ -66,6 +76,74 @@ function Body () {
 		}
 		`
 	
+	const CartDiv = styled.div`
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		border: none;
+		outline: #f1f1f2;
+		border-radius: 6px;
+		background: #a23530;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		cursor: pointer;
+		align-items: center;
+
+		@media only screen and (max-width: 700px){
+		bottom: 10px;
+		right: 10px;
+		left: 10px;
+		}
+		`
+	
+	const DivCol = styled.div`
+		display: flex;
+		flex-direction: column;
+		margin: 0 100px 0 20px;
+
+		@media only screen and (max-width: 700px){
+		margin: 0 60px 0 20px;
+		}
+		`
+	const H1 = styled.h1`
+		color: white;
+		margin-bottom: 0px;
+		font-size: 18px;
+		font-weight: 700;
+		`
+	const P = styled.p`
+		margin-top: 5px;
+		color: white;
+		font-size: 14px;
+		font-weight: 400;
+		`
+	const DivIcon = styled.div`
+		margin: 0 20px;
+		`
+	
+	const K = styled.h1`
+		color: white;
+		font-size: 18px;
+		font-weight: 700;
+	`
+	
+	let cart = (
+		<CartDiv>
+			<DivCol>
+				<H1>{quantity} Items | Rp.{price}</H1>
+				<P>Termasuk ongkos kirim</P>
+			</DivCol>
+			<DivIcon>
+				<K>KER</K>
+			</DivIcon>
+		</CartDiv>
+	)
+	
+	if(!openCart){
+		cart = "";
+	}
+	
 	return(
 		<BodyDiv>
 			<DivButton>
@@ -73,13 +151,14 @@ function Body () {
 				<ButtonDinner disabled>DINNER</ButtonDinner>
 			</DivButton>
 			<DivProduct>
-				<Products />
-				<Products />
-				<Products />
-				<Products />
-				<Products />
-				<Products />
+				<Products addPrice={addPriceHandler} />
+				<Products addPrice={addPriceHandler} />
+				<Products addPrice={addPriceHandler} />
+				<Products addPrice={addPriceHandler} />
+				<Products addPrice={addPriceHandler} />
+				<Products addPrice={addPriceHandler} />
 			</DivProduct>
+			{cart}
 		</BodyDiv>
 	)
 }

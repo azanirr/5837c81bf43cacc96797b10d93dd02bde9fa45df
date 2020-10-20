@@ -27,12 +27,20 @@ function Navbar () {
 		autoplay: false,
 		fade: false,
 		speed: 500,
-		slidesToShow: 14,
-		slidesToScroll: 14,
+		slidesToShow: 15,
+		slidesToScroll: 15,
 		arrows: true,
 		responsive: [
 		  {
 			breakpoint: 1200,
+			settings: {
+			  arrows: true,
+			  slidesToShow: 12,
+			  slidesToScroll: 12,
+			},
+		  },
+		  {
+			breakpoint: 1000,
 			settings: {
 			  arrows: true,
 			  slidesToShow: 10,
@@ -40,19 +48,11 @@ function Navbar () {
 			},
 		  },
 		  {
-			breakpoint: 1000,
+			breakpoint: 760,
 			settings: {
 			  arrows: true,
 			  slidesToShow: 7,
 			  slidesToScroll: 7,
-			},
-		  },
-		  {
-			breakpoint: 760,
-			settings: {
-			  arrows: true,
-			  slidesToShow: 6,
-			  slidesToScroll: 6,
 			},
 		  },
 		  {
