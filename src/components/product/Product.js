@@ -56,6 +56,7 @@ const Card = styled.div`
 
 		@media only screen and (max-width: 700px){
 		width: 100%;
+		height: 450px
 		}
 		`;
 	

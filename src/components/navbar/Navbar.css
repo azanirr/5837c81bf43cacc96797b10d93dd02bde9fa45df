@@ -1,0 +1,11 @@
+ .Active{
+	border: none;
+	border-radius: 75%;
+	background: #424749;
+	color: white;
+}
+
+.Active h1{
+	
+	color: white;
+}

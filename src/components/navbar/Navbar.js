@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import moment from 'moment';
+import './Navbar.css';
 import styled from 'styled-components';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -9,7 +10,14 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 function Navbar () {
 	
-	const [day, setDay] = useState([]);
+	const [day, setDay] = useState([]),
+		  [active, setActive] = useState("");
+	
+	const onChangeActive = (id) => {
+		if(id){
+			setActive(id);
+		}
+	}
 	
 	useEffect(() => {
 		const days = []
@@ -23,11 +31,8 @@ function Navbar () {
 			}
 			days.push(data);
 			dateStart.add(1, "days");
-			console.log(dateEnd.isoWeekday());
 		}
 		setDay(days);
-		console.log(moment().isoWeekday())
-		console.log(days);;
 	}, [])
 	
 	let settings = {
@@ -97,7 +102,10 @@ function Navbar () {
 										<Date>{day.date}</Date>	
 									</DivDisabled>
 									:
-									<DivRow>
+									<DivRow
+										className={active === day.id ? `Active` : ""}
+										onClick={() => onChangeActive(day.id)}
+										>
 											<Date>{day.date}</Date>
 									</DivRow>}
 								</div>
