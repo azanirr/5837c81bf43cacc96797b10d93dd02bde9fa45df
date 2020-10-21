@@ -69,6 +69,7 @@ const DivModal = styled.div`
 		right: 30%;
 		margin: 100px auto 0 auto;
 		background: white;
+		border: 0;
 		border-radius: 8px;
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
@@ -115,7 +116,7 @@ const DivModal = styled.div`
 		flex-direction: column;
 		border-bottom: 1px solid #f1f1f2;
 		justify-content: center;
-		width: 400px;
+		width: 500px;
 		`
 	const Ploc = styled.p`
 		font-weight: 400;

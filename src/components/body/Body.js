@@ -66,6 +66,7 @@ function Body (props) {
 				<ButtonLunch>LUNCH</ButtonLunch>
 				<ButtonDinner disabled>DINNER</ButtonDinner>
 			</DivButton>
+			<DateNow>Wednesday, 21 Oct 2020</DateNow>
 			<DivProduct>
 				{product.map((list) => {
 					return(
@@ -82,6 +83,16 @@ function Body (props) {
 		</BodyDiv>
 	)
 }
+				
+const DateNow = styled.h1`
+		color: #424749;
+		margin: 10% 0 0 100px;
+		font-size: 18px;
+		font-weight: 700;
+		
+		@media only screen and (max-width: 700px){
+		margin: 10% 0 0 5%;
+		}		`
 
 const DivLinear = styled.div`
 		background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
@@ -98,6 +109,7 @@ const DivLinear = styled.div`
 
 const BodyDiv = styled.div`
 		padding-top: 180px;
+		padding-bottom: 100px;
 	`
 	
 	const DivProduct = styled.div`
