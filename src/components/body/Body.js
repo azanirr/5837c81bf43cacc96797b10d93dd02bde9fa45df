@@ -86,7 +86,7 @@ function Body (props) {
 				
 const DateNow = styled.h1`
 		color: #424749;
-		margin: 10% 0 0 100px;
+		margin: 5% 0 0 10%;
 		font-size: 18px;
 		font-weight: 700;
 		
