@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import StarRatings from 'react-star-ratings';
 import AddIcon from '@material-ui/icons/Add';
+import numeral from 'numeral';
 
 function Product (props) {
 
@@ -26,7 +27,7 @@ function Product (props) {
 			<Header>{list.title}</Header>
 			<Para>{list.from}</Para>
 			<DivPrice>
-				<Header>${price.toFixed(2)}</Header>
+				<Header>Rp.{numeral(price).format('0,0')}</Header>
 				<Button onClick={() => addPrice(Number(list.price))}>
 					<p style={{margin: "0 5px 0 0"}}>ADD</p>
 					<AddIcon style={{fontSize: "22px"}}/>

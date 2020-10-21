@@ -6,6 +6,7 @@ import Products from '../product/Product';
 import ModalLocation from '../modalLocation/ModalLocation';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import numeral from 'numeral';
 
 function Body (props) {
 	
@@ -30,9 +31,10 @@ function Body (props) {
 	
 	
 	let cart = (
+		<DivLinear>
 		<CartDiv>
 			<DivCol>
-				<H1>{quantity} Items | ${price}</H1>
+				<H1>{quantity} Items | Rp.{numeral(price).format('0,0')}</H1>
 				<P>Termasuk ongkos kirim</P>
 			</DivCol>
 			<DivIcon onClick={() => onChange(true)}>
@@ -40,6 +42,7 @@ function Body (props) {
 				<ArrowForwardIosIcon style={{fill: "white"}}/>
 			</DivIcon>
 		</CartDiv>
+		</DivLinear>
 	)
 	
 	if(!openCart){
@@ -79,6 +82,19 @@ function Body (props) {
 		</BodyDiv>
 	)
 }
+
+const DivLinear = styled.div`
+		background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		height: 100px;
+		width: 30%;
+
+		@media only screen and (max-width: 700px){
+		width: 100%;
+		}
+	`
 
 const BodyDiv = styled.div`
 		padding-top: 180px;

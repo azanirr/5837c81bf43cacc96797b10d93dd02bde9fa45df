@@ -10,14 +10,14 @@ const initialState = {
 		rating: "4.5",
 		title: "Healthy Vegetable Salads",
 		from: "by Kulina • Uptown Lunch",
-		price: 11.49
+		price: 25000
 	}, {
 		id: 2,
 		image: Food2,
 		rating: "4",
 		title: "Burger Patty With Mayonnaise",
 		from: "by Kulina • Uptown Lunch",
-		price: 14.90
+		price: 40000
 	},
 		{
 		id: 3,
@@ -25,7 +25,7 @@ const initialState = {
 		rating: "5",
 		title: "Pancake With Chocolate Syrup",
 		from: "by Kulina • Uptown Desert",
-		price: 9.50
+		price: 27000
 		}],
 	totalPrice: 0
 }
