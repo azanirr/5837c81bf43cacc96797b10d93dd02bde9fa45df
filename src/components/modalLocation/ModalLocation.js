@@ -10,12 +10,12 @@ function ModalLocation (props) {
 	
 	return(
 		<div>
-			<Modal open={open} onClose={onClose}>
+			<Modal open={open} onClose={onClose} style={{overflowY: "auto"}}>
 				<DivModal>
 					<CloseIcon style={{position: "absolute", top: "10px", right: "10px", cursor: "pointer"}} onClick={onClose}/>
 					<H1>Cek makanan yang tersedia di lokasi kamu!</H1>
 					<DivInput>
-						<LocationOnIcon style={{position: "absolute", left: "10%", top: "30%", fill: "#f9423a"}} />
+						<LocationOnIcon style={{position: "absolute", left: "10%", top: "32%", fill: "#f9423a"}} />
 						<Input></Input>
 					</DivInput>
 					<DivLoc>
@@ -76,6 +76,7 @@ const DivModal = styled.div`
 		
 		@media only screen and (max-width: 700px){
 		width: 100%;
+		height: 550px;
 		left: 0;
 		right: 0;
 		}
@@ -87,6 +88,10 @@ const DivModal = styled.div`
 		padding-top: 100px;
 		color: #424749;
 		width: 85%;
+
+		@media only screen and (max-width: 700px){
+		padding-top: 30px;
+		}
 	`
 	const Input = styled.input`
 		width:85%;
@@ -103,6 +108,10 @@ const DivModal = styled.div`
 		flex-direction: row;
 		align-items: center;
 		margin: 20px 50px 0px 50px;
+
+		@media only screen and (max-width: 700px){
+		margin: 10px 20px 0px 20px
+		}
 	`
 	
 	const H1loc = styled.h1`
@@ -117,6 +126,10 @@ const DivModal = styled.div`
 		border-bottom: 1px solid #f1f1f2;
 		justify-content: center;
 		width: 500px;
+
+		@media only screen and (max-width: 700px){
+		width: 100%;
+		}
 		`
 	const Ploc = styled.p`
 		font-weight: 400;
