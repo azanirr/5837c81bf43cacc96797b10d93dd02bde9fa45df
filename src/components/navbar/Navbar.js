@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 function Navbar () {
 	
@@ -27,7 +29,7 @@ function Navbar () {
 		autoplay: false,
 		fade: false,
 		speed: 500,
-		slidesToShow: 15,
+		slidesToShow: 16,
 		slidesToScroll: 15,
 		arrows: true,
 		responsive: [
@@ -105,14 +107,11 @@ function Navbar () {
 	const Div = styled.div`
 		display:flex;
 		flex-direction: row;
+		align-items: center;
 	`
-	const Arrow = styled.h1`
-		margin-left: 45px;
-		color: #424749;
-		font-size: 24px;
-		`
+
 	const DivCol = styled.div`
-		margin: 15px 0 0 20px;
+		margin: 15px 0 15px 20px;
 		display:flex;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -130,14 +129,22 @@ function Navbar () {
 	const DivSlide = styled.div`
 		border-bottom: 1px solid #f1f1f2;
 		`
+	const DivIcon = styled.div`
+		display: flex;
+		flex-direction: row;
+		margin: 0;
+		`
 	
 	return(
 		<DivFixed>
 			<Div>
-				<Arrow>A</Arrow>
+				<ArrowBackIcon style={{fontSize: "35px", marginLeft:"35px"}}/>
 				<DivCol>
 					<P1>ALAMAT PENGANTARAN</P1>
-					<H1>Tokopedia Tower</H1>
+					<DivIcon>
+						<H1>Tokopedia Tower </H1>
+						<ExpandMoreIcon style={{fill: "#f9423a", margin: "-4px 0 0 0", fontSize: "30px"}} />
+					</DivIcon>
 				</DivCol>
 			</Div>
 			<DivSlide>
@@ -145,7 +152,7 @@ function Navbar () {
 						{day.map(day => {
 							return(		
 								<DivRow>
-									<Date>{day}</Date>
+										<Date>{day}</Date>
 								</DivRow>
 							)
 						})}

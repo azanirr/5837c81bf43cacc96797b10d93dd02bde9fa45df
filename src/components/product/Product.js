@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import GuitarImage from '../../assets/image/guitar.jpg';
 import StarRatings from 'react-star-ratings';
+import AddIcon from '@material-ui/icons/Add';
 
 function Product (props) {
 
@@ -80,6 +81,10 @@ function Product (props) {
 		color:white;
 		float: right;
 		background: #f9423a;
+		font-size: 16px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 		border: none;
 		transition: all 0.4s ease 0s;
 		cursor: pointer;
@@ -105,13 +110,16 @@ function Product (props) {
 					  name='rating'
 					  starDimension="16px"
       				  starSpacing="4px"
-					/>
+				/>
 			</RatingContainer>
 			<Header>Black Semi Hollow Guitar</Header>
 			<Para>by Kulina • Uptown Guitar</Para>
 			<DivPrice>
 				<Header>Rp.35.000</Header>
-				<Button onClick={addPrice}>Add +</Button>
+				<Button onClick={addPrice}>
+					<p style={{margin: "0 5px 0 0"}}>ADD</p>
+					<AddIcon style={{fontSize: "22px"}}/>
+				</Button>
 			</DivPrice>
 		</Card>
 	)

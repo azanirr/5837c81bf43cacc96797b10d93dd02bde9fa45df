@@ -1,17 +1,26 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import Products from '../product/Product';
+import ModalLocation from '../modalLocation/ModalLocation';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 function Body () {
 	
 	const [price, setPrice] = useState(0),
 		  [quantity, setQuantity] = useState(0),
-		  [openCart, setOpenCart] = useState(false);
+		  [openCart, setOpenCart] = useState(false),
+		  [modal, setModal] = useState(false)
 	
 	const addPriceHandler = () => {
 		setPrice(price + 35000);
 		setQuantity(quantity + 1);
 		setOpenCart(true);
+	}
+	
+	const onChange = (value) => {
+		setModal(value);
+		console.log("modal is " + modal);
 	}
 	
 	
@@ -87,7 +96,6 @@ function Body () {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		cursor: pointer;
 		align-items: center;
 
 		@media only screen and (max-width: 700px){
@@ -120,13 +128,12 @@ function Body () {
 		`
 	const DivIcon = styled.div`
 		margin: 0 20px;
+		display: flex;
+		cursor: pointer;
+		flex-direction: row;
+		align-items: center;
 		`
 	
-	const K = styled.h1`
-		color: white;
-		font-size: 18px;
-		font-weight: 700;
-	`
 	
 	let cart = (
 		<CartDiv>
@@ -134,14 +141,26 @@ function Body () {
 				<H1>{quantity} Items | Rp.{price}</H1>
 				<P>Termasuk ongkos kirim</P>
 			</DivCol>
-			<DivIcon>
-				<K>KER</K>
+			<DivIcon onClick={() => onChange(true)}>
+				<ShoppingCartIcon style={{fill: "white"}}/>
+				<ArrowForwardIosIcon style={{fill: "white"}}/>
 			</DivIcon>
 		</CartDiv>
 	)
 	
 	if(!openCart){
 		cart = "";
+	}
+	
+	let modale = "";
+	
+	if(modal){
+		modale= (
+		<ModalLocation 
+			open={modal}
+			onClose={() => onChange(false)}
+			/>
+	)
 	}
 	
 	return(
@@ -159,6 +178,7 @@ function Body () {
 				<Products addPrice={addPriceHandler} />
 			</DivProduct>
 			{cart}
+			{modale}
 		</BodyDiv>
 	)
 }
