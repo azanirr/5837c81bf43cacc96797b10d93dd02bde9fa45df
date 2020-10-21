@@ -16,11 +16,18 @@ function Navbar () {
 		const dateStart = moment();
 		const dateEnd = moment().add(30, "days");
 	  	while (dateEnd.diff(dateStart, "days") >= 0) {
-			days.push(dateStart.format("ddd D"));
+			const data = {
+				id: dateStart.format("D"),
+				date: dateStart.format("ddd D"),
+				disabled: dateStart.isoWeekday() === 6 || dateStart.isoWeekday() === 7
+			}
+			days.push(data);
 			dateStart.add(1, "days");
+			console.log(dateEnd.isoWeekday());
 		}
 		setDay(days);
-		console.log(days);
+		console.log(moment().isoWeekday())
+		console.log(days);;
 	}, [])
 	
 	let settings = {
@@ -68,7 +75,51 @@ function Navbar () {
 		],
 	  };
 	
-	const DivRow = styled.div`
+	return(
+		<DivFixed>
+			<Div>
+				<ArrowBackIcon style={{fontSize: "35px", marginLeft:"35px"}}/>
+				<DivCol>
+					<P1>ALAMAT PENGANTARAN</P1>
+					<DivIcon>
+						<H1>Tokopedia Tower </H1>
+						<ExpandMoreIcon style={{fill: "#f9423a", margin: "-4px 0 0 0", fontSize: "30px"}} />
+					</DivIcon>
+				</DivCol>
+			</Div>
+			<DivSlide>
+				<Slider {...settings}>
+						{day.map(day => {
+							return(
+								<div key={day.id}>
+									{day.disabled ? 
+									<DivDisabled disabled>
+										<Date>{day.date}</Date>	
+									</DivDisabled>
+									:
+									<DivRow>
+											<Date>{day.date}</Date>
+									</DivRow>}
+								</div>
+							)
+						})}
+				</Slider>
+			</DivSlide>
+			</DivFixed>
+	)
+}
+
+const DivDisabled = styled.div `
+		width: 100%;
+		height: 75px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		transition: all 0.4s ease 0s;
+		color: #e2e4e4;
+		`
+
+const DivRow = styled.div`
 		width: 100%;
 		height: 75px;
 		display: flex;
@@ -132,34 +183,6 @@ function Navbar () {
 	const DivIcon = styled.div`
 		display: flex;
 		flex-direction: row;
-		margin: 0;
-		`
-	
-	return(
-		<DivFixed>
-			<Div>
-				<ArrowBackIcon style={{fontSize: "35px", marginLeft:"35px"}}/>
-				<DivCol>
-					<P1>ALAMAT PENGANTARAN</P1>
-					<DivIcon>
-						<H1>Tokopedia Tower </H1>
-						<ExpandMoreIcon style={{fill: "#f9423a", margin: "-4px 0 0 0", fontSize: "30px"}} />
-					</DivIcon>
-				</DivCol>
-			</Div>
-			<DivSlide>
-				<Slider {...settings}>
-						{day.map(day => {
-							return(		
-								<DivRow>
-										<Date>{day}</Date>
-								</DivRow>
-							)
-						})}
-				</Slider>
-			</DivSlide>
-			</DivFixed>
-	)
-}
+		margin: 0;`
 
 export default Navbar;

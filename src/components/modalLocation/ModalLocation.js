@@ -8,7 +8,59 @@ function ModalLocation (props) {
 	
 	const { open, onClose } = props;
 	
-	const DivModal = styled.div`
+	return(
+		<div>
+			<Modal open={open} onClose={onClose}>
+				<DivModal>
+					<CloseIcon style={{position: "absolute", top: "10px", right: "10px", cursor: "pointer"}} onClick={onClose}/>
+					<H1>Cek makanan yang tersedia di lokasi kamu!</H1>
+					<DivInput>
+						<LocationOnIcon style={{position: "absolute", left: "10%", top: "30%", fill: "#f9423a"}} />
+						<Input></Input>
+					</DivInput>
+					<DivLoc>
+						<div>
+							<LocationOnIcon  style={{background: "#e2e4e4", borderRadius: "75%", marginRight: "30px", fill: "#6e7679"}}></LocationOnIcon>
+						</div>
+						<DivDetail>
+							<H1loc>Kulina</H1loc>
+							<Ploc>Jalan Tulodong Atas 28, Senayan, Kebayoran Baru</Ploc>
+						</DivDetail>
+					</DivLoc>
+					<DivLoc>
+						<div>
+							<LocationOnIcon  style={{background: "#e2e4e4", borderRadius: "75%", marginRight: "30px", fill: "#6e7679"}}></LocationOnIcon>
+						</div>
+						<DivDetail>
+							<H1loc>Pancora Riverside Appartment</H1loc>
+							<Ploc>RT.6/RW.12, Pengadean, Pancoran, South Jakarta</Ploc>
+						</DivDetail>
+					</DivLoc>
+					<DivLoc>
+						<div>
+							<LocationOnIcon  style={{background: "#e2e4e4", borderRadius: "75%", marginRight: "30px", fill: "#6e7679"}}></LocationOnIcon>
+						</div>
+						<DivDetail>
+							<H1loc>Jalan Tulodong Atas 28</H1loc>
+							<Ploc>Jalan Tulodong Atas 28, Senayan, Kebayoran Baru</Ploc>
+						</DivDetail>
+					</DivLoc>
+					<DivLoc>
+						<div>
+							<LocationOnIcon  style={{background: "#e2e4e4", borderRadius: "75%", marginRight: "30px", fill: "#6e7679"}}></LocationOnIcon>
+						</div>
+						<DivDetail>
+							<H1loc>Block71 Jakarta</H1loc>
+							<Ploc>Ariobimo Sentral, South Jakarta, RT.9/RW.4, Jakarta</Ploc>
+						</DivDetail>
+					</DivLoc>
+				</DivModal>
+			</Modal>
+		</div>
+	)
+}
+
+const DivModal = styled.div`
 		width: 40%;
 		height: 700px;
 		position: fixed;
@@ -76,57 +128,5 @@ function ModalLocation (props) {
 		display: flex;
 		flex-direction: row;
 	`
-	
-	return(
-		<div>
-			<Modal open={open} onClose={onClose}>
-				<DivModal>
-					<CloseIcon style={{position: "absolute", top: "10px", right: "10px", cursor: "pointer"}} onClick={onClose}/>
-					<H1>Cek makanan yang tersedia di lokasi kamu!</H1>
-					<DivInput>
-						<LocationOnIcon style={{position: "absolute", left: "10%", top: "30%", fill: "#f9423a"}} />
-						<Input></Input>
-					</DivInput>
-					<DivLoc>
-						<div>
-							<LocationOnIcon  style={{background: "#e2e4e4", borderRadius: "75%", marginRight: "30px", fill: "#6e7679"}}></LocationOnIcon>
-						</div>
-						<DivDetail>
-							<H1loc>Kulina</H1loc>
-							<Ploc>Jalan Tulodong Atas 28, Senayan, Kebayoran Baru</Ploc>
-						</DivDetail>
-					</DivLoc>
-					<DivLoc>
-						<div>
-							<LocationOnIcon  style={{background: "#e2e4e4", borderRadius: "75%", marginRight: "30px", fill: "#6e7679"}}></LocationOnIcon>
-						</div>
-						<DivDetail>
-							<H1loc>Pancora Riverside Appartment</H1loc>
-							<Ploc>RT.6/RW.12, Pengadean, Pancoran, South Jakarta</Ploc>
-						</DivDetail>
-					</DivLoc>
-					<DivLoc>
-						<div>
-							<LocationOnIcon  style={{background: "#e2e4e4", borderRadius: "75%", marginRight: "30px", fill: "#6e7679"}}></LocationOnIcon>
-						</div>
-						<DivDetail>
-							<H1loc>Jalan Tulodong Atas 28</H1loc>
-							<Ploc>Jalan Tulodong Atas 28, Senayan, Kebayoran Baru</Ploc>
-						</DivDetail>
-					</DivLoc>
-					<DivLoc>
-						<div>
-							<LocationOnIcon  style={{background: "#e2e4e4", borderRadius: "75%", marginRight: "30px", fill: "#6e7679"}}></LocationOnIcon>
-						</div>
-						<DivDetail>
-							<H1loc>Block71 Jakarta</H1loc>
-							<Ploc>Ariobimo Sentral, South Jakarta, RT.9/RW.4, Jakarta</Ploc>
-						</DivDetail>
-					</DivLoc>
-				</DivModal>
-			</Modal>
-		</div>
-	)
-}
 
 export default ModalLocation;

@@ -1,19 +1,23 @@
 import React, {useState} from 'react';
+import { connect } from 'react-redux';
+
 import styled from 'styled-components';
 import Products from '../product/Product';
 import ModalLocation from '../modalLocation/ModalLocation';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
-function Body () {
+function Body (props) {
+	
+	const {product} = props;
 	
 	const [price, setPrice] = useState(0),
 		  [quantity, setQuantity] = useState(0),
 		  [openCart, setOpenCart] = useState(false),
 		  [modal, setModal] = useState(false)
 	
-	const addPriceHandler = () => {
-		setPrice(price + 35000);
+	const addPriceHandler = (val) => {
+		setPrice(price + val);
 		setQuantity(quantity + 1);
 		setOpenCart(true);
 	}
@@ -24,7 +28,59 @@ function Body () {
 	}
 	
 	
-	const BodyDiv = styled.div`
+	
+	let cart = (
+		<CartDiv>
+			<DivCol>
+				<H1>{quantity} Items | ${price}</H1>
+				<P>Termasuk ongkos kirim</P>
+			</DivCol>
+			<DivIcon onClick={() => onChange(true)}>
+				<ShoppingCartIcon style={{fill: "white"}}/>
+				<ArrowForwardIosIcon style={{fill: "white"}}/>
+			</DivIcon>
+		</CartDiv>
+	)
+	
+	if(!openCart){
+		cart = "";
+	}
+	
+	let modale = "";
+	
+	if(modal){
+		modale= (
+		<ModalLocation 
+			open={modal}
+			onClose={() => onChange(false)}
+			/>
+	)
+	}
+	
+	return(
+		<BodyDiv>
+			<DivButton>
+				<ButtonLunch>LUNCH</ButtonLunch>
+				<ButtonDinner disabled>DINNER</ButtonDinner>
+			</DivButton>
+			<DivProduct>
+				{product.map((list) => {
+					return(
+						<Products 
+							key={list.id}
+							list={list}
+							addPrice={addPriceHandler} />
+					)
+				})}
+				
+			</DivProduct>
+			{cart}
+			{modale}
+		</BodyDiv>
+	)
+}
+
+const BodyDiv = styled.div`
 		padding-top: 180px;
 	`
 	
@@ -134,53 +190,11 @@ function Body () {
 		align-items: center;
 		`
 	
-	
-	let cart = (
-		<CartDiv>
-			<DivCol>
-				<H1>{quantity} Items | Rp.{price}</H1>
-				<P>Termasuk ongkos kirim</P>
-			</DivCol>
-			<DivIcon onClick={() => onChange(true)}>
-				<ShoppingCartIcon style={{fill: "white"}}/>
-				<ArrowForwardIosIcon style={{fill: "white"}}/>
-			</DivIcon>
-		</CartDiv>
-	)
-	
-	if(!openCart){
-		cart = "";
-	}
-	
-	let modale = "";
-	
-	if(modal){
-		modale= (
-		<ModalLocation 
-			open={modal}
-			onClose={() => onChange(false)}
-			/>
-	)
-	}
-	
-	return(
-		<BodyDiv>
-			<DivButton>
-				<ButtonLunch>LUNCH</ButtonLunch>
-				<ButtonDinner disabled>DINNER</ButtonDinner>
-			</DivButton>
-			<DivProduct>
-				<Products addPrice={addPriceHandler} />
-				<Products addPrice={addPriceHandler} />
-				<Products addPrice={addPriceHandler} />
-				<Products addPrice={addPriceHandler} />
-				<Products addPrice={addPriceHandler} />
-				<Products addPrice={addPriceHandler} />
-			</DivProduct>
-			{cart}
-			{modale}
-		</BodyDiv>
-	)
+
+const mapStateToProps = state => {
+    return {
+        product: state.product,
+    };
 }
 
-export default Body;
+export default connect(mapStateToProps, null)(Body);

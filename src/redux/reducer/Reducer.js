@@ -1,21 +1,32 @@
 import * as actionTypes from '../constant/actionTypes';
-import Guitar from '../../assets/image/guitar.jpg';
-import Guitar2 from '../../assets/image/guitar2.jpg';
+import Food from '../../assets/image/Food.jpg';
+import Food2 from '../../assets/image/Food2.jpg';
+import Food3 from '../../assets/image/Food3.jpg';
 
 const initialState = {
     product: [{
-		image: Guitar,
+		id: 1,
+		image: Food,
 		rating: "4.5",
-		title: "Black Semi Hollow Guitar",
-		from: "by Kulina • Uptown Guitar",
-		price: "5.000"
+		title: "Healthy Vegetable Salads",
+		from: "by Kulina • Uptown Lunch",
+		price: 11.49
 	}, {
-		image: Guitar2,
+		id: 2,
+		image: Food2,
 		rating: "4",
-		title: "Accoustic Nihon Wood Guitar",
-		from: "by Kulina • Woodly Guitar",
-		price: "700"
-	}],
+		title: "Burger Patty With Mayonnaise",
+		from: "by Kulina • Uptown Lunch",
+		price: 14.90
+	},
+		{
+		id: 3,
+		image: Food3,
+		rating: "5",
+		title: "Pancake With Chocolate Syrup",
+		from: "by Kulina • Uptown Desert",
+		price: 9.50
+		}],
 	totalPrice: 0
 }
 
@@ -24,8 +35,12 @@ function rootReducer(state = initialState, action){
 		case actionTypes.ADD_PRICE:
 			return {
 				...state,
-				product: [state.product, action.payload],
-				totalPrice: state.totalPrice + state.product.price
+				product: [state.product, action.payload]
+			}
+		case actionTypes.CALCULATE_PRICE:
+			return{
+				...state,
+				totalPrice: state.product.reduce()
 			}
 			default: return state;
 	}

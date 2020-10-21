@@ -1,16 +1,42 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import GuitarImage from '../../assets/image/guitar.jpg';
 import StarRatings from 'react-star-ratings';
 import AddIcon from '@material-ui/icons/Add';
 
 function Product (props) {
 
-	const { addPrice } = props;
+	const { addPrice, list } = props;
 	
-	const [rating] = useState(4.5);
-	
-	const Card = styled.div`
+	const price = list.price;
+		
+	return(
+		<Card>
+			<Image src={list.image} alt="guitar"/>
+			<RatingContainer>
+				<PRate>{list.rating}</PRate>	
+				<StarRatings
+					  rating={Number(list.rating)}
+					  starRatedColor="#f9423a"
+					  numberOfStars={5}
+					  name='rating'
+					  starDimension="16px"
+      				  starSpacing="4px"
+				/>
+			</RatingContainer>
+			<Header>{list.title}</Header>
+			<Para>{list.from}</Para>
+			<DivPrice>
+				<Header>${price.toFixed(2)}</Header>
+				<Button onClick={() => addPrice(Number(list.price))}>
+					<p style={{margin: "0 5px 0 0"}}>ADD</p>
+					<AddIcon style={{fontSize: "22px"}}/>
+				</Button>
+			</DivPrice>
+		</Card>
+	)
+}
+
+const Card = styled.div`
 		border-box: 1px solid black;
 		box-shadow: 0px 8px 10px rgba(10,31,68,0.1);
 		border-radius: 8px;
@@ -38,6 +64,10 @@ function Product (props) {
 		height: 300px;
 		border-top-right-radius: 8px;
 		border-top-left-radius: 8px;
+
+		@media only screen and (max-width: 500px){
+		height: 250px;
+		}
 		`;
 	
 	const RatingContainer = styled.div`
@@ -98,31 +128,5 @@ function Product (props) {
 		background: #d12a21;
 		}`
 	
-	return(
-		<Card>
-			<Image src={GuitarImage} alt="guitar"/>
-			<RatingContainer>
-				<PRate>{rating}</PRate>	
-				<StarRatings
-					  rating={rating}
-					  starRatedColor="#f9423a"
-					  numberOfStars={5}
-					  name='rating'
-					  starDimension="16px"
-      				  starSpacing="4px"
-				/>
-			</RatingContainer>
-			<Header>Black Semi Hollow Guitar</Header>
-			<Para>by Kulina • Uptown Guitar</Para>
-			<DivPrice>
-				<Header>Rp.35.000</Header>
-				<Button onClick={addPrice}>
-					<p style={{margin: "0 5px 0 0"}}>ADD</p>
-					<AddIcon style={{fontSize: "22px"}}/>
-				</Button>
-			</DivPrice>
-		</Card>
-	)
-}
 
 export default Product;
